@@ -3,8 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
+    <groupId>com.wangz</groupId>
+    <artifactId>seckill</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <groupId>user.provider</groupId>
