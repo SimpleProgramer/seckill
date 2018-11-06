@@ -1,0 +1,12 @@
+server:
+  port: 8082
+spring:
+  dubbo: 
+    application: 
+      name: user-consumer
+    registry:
+      address: zookeeper://47.106.90.231:2181
+    protocol:
+      name: dubbo
+      port: 20880
+    scan: com.wangz.service
