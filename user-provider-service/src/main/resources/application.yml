@@ -46,7 +46,7 @@ spring:
 mybatis:
   type-aliases-package: com.wangz.entity
   configuration:
-    map-underscore-to-camel-case: true #开启字段的驼峰映射
-  mapper-locations: 'classpath*:mapper/**/*Mapper.xml'
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/**/*Dao.xml
 logging:
   config: classpath:logback-spring.xml
