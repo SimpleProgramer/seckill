@@ -1,9 +1,9 @@
 server:
-  port: 8082
+  port: 8083
 spring:
   dubbo:
     application:
-      name: user-consumer
+      name: seckill-server
     registry:
       address: zookeeper://47.106.90.231:2181
     protocol:

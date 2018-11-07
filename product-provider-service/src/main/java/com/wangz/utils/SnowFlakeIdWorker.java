@@ -3,18 +3,18 @@ package com.wangz.utils;
 /**
  * 系统全局的UUID生成器
  */
-public class UUIDSequenceWorker {
+public class SnowFlakeIdWorker {
 
     private long workerId;
     private long datacenterId;
     private long sequence;
-    private static volatile UUIDSequenceWorker u;
+    private static volatile SnowFlakeIdWorker u;
 
     static {
-        u = new UUIDSequenceWorker(1, 1, 1);
+        u = new SnowFlakeIdWorker(1, 1, 3);
     }
 
-    public UUIDSequenceWorker(long workerId, long datacenterId, long sequence){
+    public SnowFlakeIdWorker(long workerId, long datacenterId, long sequence){
         // sanity check for workerId
         if (workerId > maxWorkerId || workerId < 0) {
             throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0",maxWorkerId));
@@ -99,7 +99,6 @@ public class UUIDSequenceWorker {
      * @return
      */
     public static Long uniqueSequenceId(){
-        UUIDSequenceWorker u = new UUIDSequenceWorker(1,1,1);
         return u.nextId() >> 39;
     }
 

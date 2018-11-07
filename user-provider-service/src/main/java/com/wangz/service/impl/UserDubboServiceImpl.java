@@ -7,6 +7,7 @@ import com.wangz.entity.example.UserExample;
 import com.wangz.service.UserDubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,12 +24,8 @@ public class UserDubboServiceImpl implements UserDubboService {
 	private UserDao userDao;
 
 	@Override
-	public User findUserByName(String name) {
-
-		UserExample example = new UserExample();
-		example.createCriteria().andUserNameEqualTo(name);
-		List<User> user = userDao.selectByExample(example);
-		return Optional.ofNullable(user).orElse(new ArrayList<>()).get(0);
+	public User findUserByUserId(Long userId) {
+		return Optional.of(userDao.selectByPrimaryKey(userId)).orElse(null);
 	}
 
 }
