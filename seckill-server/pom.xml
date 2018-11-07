@@ -3,27 +3,15 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <parent>
         <groupId>com.wangz</groupId>
         <artifactId>seckill</artifactId>
         <version>1.0.0</version>
     </parent>
-    <groupId>user.provider</groupId>
-    <artifactId>user-provider-service</artifactId>
-    <version>1.0.0</version>
-    <name>user-provider-service</name>
+    <groupId>seckill.server</groupId>
+    <artifactId>seckill-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>seckill-server</name>
     <url>http://maven.apache.org</url>
     <packaging>jar</packaging>
     <properties>
@@ -39,6 +27,10 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
