@@ -41,6 +41,8 @@ public class SecKillServiceImpl implements SecKillService {
         if (CheckParam.isNull(product)) {
             throw new BusinessException(ErrorCode.NO_PRODUCT_CODE);
         }
+        //简单的反作弊维度 ：账号，ip，购买物品，
+
 
         return null;
     }
