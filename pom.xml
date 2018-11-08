@@ -58,6 +58,7 @@
 	    <module>user-provider-service</module>
 	    <module>product-provider-service</module>
 	    <module>seckill-commons</module>
+	    <module>order-consumer-service</module>
 	    <module>seckill-server</module>
   </modules>
 </project>

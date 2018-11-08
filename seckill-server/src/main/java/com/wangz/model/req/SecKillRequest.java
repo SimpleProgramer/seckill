@@ -23,6 +23,11 @@ public class SecKillRequest {
 
     @NotNull
     @Min(1)
-    @ApiModelProperty(value = "秒杀产品id",example = "1",required = true)
+    @ApiModelProperty(value = "秒杀产品id",example = "2",required = true)
     private Long productId;
+
+    @NotNull
+    @Min(1)
+    @ApiModelProperty(value = "秒杀批次id",example = "3",required = true)
+    private Long secKillId;//秒杀批次id
 }

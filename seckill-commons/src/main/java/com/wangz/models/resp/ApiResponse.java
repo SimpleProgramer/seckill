@@ -1,5 +1,7 @@
 package com.wangz.models.resp;
 
+import com.wangz.enums.ErrorCode;
+import com.wangz.utils.MDCUtils;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -53,6 +55,10 @@ public class ApiResponse<E> implements Serializable {
         this.code = errorCode;
         this.msg = msg;
         this.data = data;
+    }
+
+    public static ApiResponse ok() {
+        return new ApiResponse(MDCUtils.getOrGenMsgId(),ErrorCode.SUCCESS.getCode(),ErrorCode.SUCCESS.getMessage(),null);
     }
 
 }

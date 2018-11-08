@@ -12,14 +12,14 @@ import java.lang.reflect.Method;
 
 /**
  * ExceptionInvokerFilter
- *  * <p>
- *  * 功能：
- *  * <ol>
- *  * <li>不期望的异常打ERROR日志（Provider端）<br>
- *  *     不期望的日志即是，没有的接口上声明的Unchecked异常。
- *  * <li>异常不在API包中，则Wrap一层RuntimeException。<br>
- *  *     RPC对于第一层异常会直接序列化传输(Cause异常会String化)，避免异常在Client出不能反序列化问题。
- *  * </ol>
+ * * <p>
+ * * 功能：
+ * * <ol>
+ * * <li>不期望的异常打ERROR日志（Provider端）<br>
+ * *     不期望的日志即是，没有的接口上声明的Unchecked异常。
+ * * <li>异常不在API包中，则Wrap一层RuntimeException。<br>
+ * *     RPC对于第一层异常会直接序列化传输(Cause异常会String化)，避免异常在Client出不能反序列化问题。
+ * * </ol>
  *
  * @version 2018/11/7 下午7:36
  * @desc
@@ -72,7 +72,7 @@ public class ExceptionFilter implements Filter {
                     // 异常类和接口类在同一jar包里，直接抛出
                     String serviceFile = ReflectUtils.getCodeBase(invoker.getInterface());
                     String exceptionFile = ReflectUtils.getCodeBase(exception.getClass());
-                    if (serviceFile == null || exceptionFile == null || serviceFile.equals(exceptionFile)){
+                    if (serviceFile == null || exceptionFile == null || serviceFile.equals(exceptionFile)) {
                         return result;
                     }
                     // 是JDK自带的异常，直接抛出
@@ -87,13 +87,13 @@ public class ExceptionFilter implements Filter {
 
                     // 否则，包装成RuntimeException抛给客户端
                     return new RpcResult(new RuntimeException(StringUtils.toString(exception)));
-                }catch (Throwable exception) {
+                } catch (Throwable exception) {
                     log.error("Fail to ExceptionFilter when called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", exception: " + exception.getClass().getName() + ": " + exception.getMessage(), exception);
                     return result;
                 }
             }
             return result;
-        }catch (RuntimeException exception) {
+        } catch (RuntimeException exception) {
             log.error("Got unchecked and undeclared exception which called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", exception: " + exception.getClass().getName() + ": " + exception.getMessage(), exception);
             throw exception;
         }

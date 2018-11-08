@@ -1,5 +1,6 @@
 package com.wangz.model.resp;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @desc
  */
 @Data
+@AllArgsConstructor
 public class SecKillResponse implements Serializable {
 
     private static final long serialVersionUID = 4417131727316512060L;
