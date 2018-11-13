@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8083
 spring:
   dubbo:
     application:
@@ -8,7 +8,7 @@ spring:
       address: zookeeper://47.106.90.231:2181
     protocol:
       name: dubbo
-      port: 20880
+      port: 20881
     scan: com.wangz.service
   datasource:
         url: jdbc:mysql://47.106.90.231:3306/seckill?useUnicode=true&characterEncoding=utf-8&useSSL=false

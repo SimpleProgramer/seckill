@@ -60,7 +60,7 @@ public class SecKillServiceImpl implements SecKillService {
         orderRequest.setProductId(productResp.getData().getId());
         orderRequest.setCreateTime(System.currentTimeMillis());
         orderRequest.setSecKillId(request.getSecKillId());
-        rabbitTemplate.convertAndSend("orderExchange",orderRequest);
+        rabbitTemplate.convertAndSend("orderExchange", "orderQueue", orderRequest);
         return new SecKillResponse("ok");
     }
 }

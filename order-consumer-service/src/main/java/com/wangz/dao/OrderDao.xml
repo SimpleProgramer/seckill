@@ -2,17 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wangz.dao.OrderDao">
   <resultMap id="BaseResultMap" type="com.wangz.entity.Order">
-    <id column="order_order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="order_user_id" jdbcType="BIGINT" property="userId" />
-    <result column="order_product_id" jdbcType="BIGINT" property="productId" />
-    <result column="order_seckill_id" jdbcType="BIGINT" property="seckillId" />
-    <result column="order_total_fee" jdbcType="INTEGER" property="totalFee" />
-    <result column="order_pay_time" jdbcType="TIMESTAMP" property="payTime" />
-    <result column="order_create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="order_update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="order_order_status" jdbcType="INTEGER" property="orderStatus" />
-    <result column="order_delete_status" jdbcType="INTEGER" property="deleteStatus" />
-    <result column="order_delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <id column="orders_order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="orders_user_id" jdbcType="BIGINT" property="userId" />
+    <result column="orders_product_id" jdbcType="BIGINT" property="productId" />
+    <result column="orders_seckill_id" jdbcType="BIGINT" property="seckillId" />
+    <result column="orders_total_fee" jdbcType="INTEGER" property="totalFee" />
+    <result column="orders_pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="orders_create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="orders_update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="orders_order_status" jdbcType="INTEGER" property="orderStatus" />
+    <result column="orders_delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="orders_delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,10 +73,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    order.order_id as order_order_id, order.user_id as order_user_id, order.product_id as order_product_id, 
-    order.seckill_id as order_seckill_id, order.total_fee as order_total_fee, order.pay_time as order_pay_time, 
-    order.create_time as order_create_time, order.update_time as order_update_time, order.order_status as order_order_status, 
-    order.delete_status as order_delete_status, order.delete_time as order_delete_time
+    orders.order_id as orders_order_id, orders.user_id as orders_user_id, orders.product_id as orders_product_id, 
+    orders.seckill_id as orders_seckill_id, orders.total_fee as orders_total_fee, orders.pay_time as orders_pay_time, 
+    orders.create_time as orders_create_time, orders.update_time as orders_update_time, 
+    orders.order_status as orders_order_status, orders.delete_status as orders_delete_status, 
+    orders.delete_time as orders_delete_time
   </sql>
   <select id="selectByExample" parameterType="com.wangz.entity.example.OrderExample" resultMap="BaseResultMap">
     select
@@ -84,7 +85,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_order order
+    from t_order orders
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -98,15 +99,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from t_order order
-    where order.order_id = #{orderId,jdbcType=BIGINT}
+    from t_order orders
+    where orders.order_id = #{orderId,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_order
     where order_id = #{orderId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.wangz.entity.example.OrderExample">
-    delete from t_order order
+    delete from t_order orders
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -195,46 +196,46 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.wangz.entity.example.OrderExample" resultType="java.lang.Long">
-    select count(*) from t_order order
+    select count(*) from t_order orders
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update t_order order
+    update t_order orders
     <set>
       <if test="record.orderId != null">
-        order.order_id = #{record.orderId,jdbcType=BIGINT},
+        orders.order_id = #{record.orderId,jdbcType=BIGINT},
       </if>
       <if test="record.userId != null">
-        order.user_id = #{record.userId,jdbcType=BIGINT},
+        orders.user_id = #{record.userId,jdbcType=BIGINT},
       </if>
       <if test="record.productId != null">
-        order.product_id = #{record.productId,jdbcType=BIGINT},
+        orders.product_id = #{record.productId,jdbcType=BIGINT},
       </if>
       <if test="record.seckillId != null">
-        order.seckill_id = #{record.seckillId,jdbcType=BIGINT},
+        orders.seckill_id = #{record.seckillId,jdbcType=BIGINT},
       </if>
       <if test="record.totalFee != null">
-        order.total_fee = #{record.totalFee,jdbcType=INTEGER},
+        orders.total_fee = #{record.totalFee,jdbcType=INTEGER},
       </if>
       <if test="record.payTime != null">
-        order.pay_time = #{record.payTime,jdbcType=TIMESTAMP},
+        orders.pay_time = #{record.payTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.createTime != null">
-        order.create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        orders.create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.updateTime != null">
-        order.update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+        orders.update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.orderStatus != null">
-        order.order_status = #{record.orderStatus,jdbcType=INTEGER},
+        orders.order_status = #{record.orderStatus,jdbcType=INTEGER},
       </if>
       <if test="record.deleteStatus != null">
-        order.delete_status = #{record.deleteStatus,jdbcType=INTEGER},
+        orders.delete_status = #{record.deleteStatus,jdbcType=INTEGER},
       </if>
       <if test="record.deleteTime != null">
-        order.delete_time = #{record.deleteTime,jdbcType=TIMESTAMP},
+        orders.delete_time = #{record.deleteTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -242,18 +243,18 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update t_order order
-    set order.order_id = #{record.orderId,jdbcType=BIGINT},
-      order.user_id = #{record.userId,jdbcType=BIGINT},
-      order.product_id = #{record.productId,jdbcType=BIGINT},
-      order.seckill_id = #{record.seckillId,jdbcType=BIGINT},
-      order.total_fee = #{record.totalFee,jdbcType=INTEGER},
-      order.pay_time = #{record.payTime,jdbcType=TIMESTAMP},
-      order.create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      order.update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      order.order_status = #{record.orderStatus,jdbcType=INTEGER},
-      order.delete_status = #{record.deleteStatus,jdbcType=INTEGER},
-      order.delete_time = #{record.deleteTime,jdbcType=TIMESTAMP}
+    update t_order orders
+    set orders.order_id = #{record.orderId,jdbcType=BIGINT},
+      orders.user_id = #{record.userId,jdbcType=BIGINT},
+      orders.product_id = #{record.productId,jdbcType=BIGINT},
+      orders.seckill_id = #{record.seckillId,jdbcType=BIGINT},
+      orders.total_fee = #{record.totalFee,jdbcType=INTEGER},
+      orders.pay_time = #{record.payTime,jdbcType=TIMESTAMP},
+      orders.create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      orders.update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      orders.order_status = #{record.orderStatus,jdbcType=INTEGER},
+      orders.delete_status = #{record.deleteStatus,jdbcType=INTEGER},
+      orders.delete_time = #{record.deleteTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

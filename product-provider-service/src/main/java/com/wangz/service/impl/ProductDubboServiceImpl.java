@@ -3,12 +3,15 @@ package com.wangz.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.wangz.dao.ProductDao;
 import com.wangz.entity.Product;
+import com.wangz.entity.example.ProductExample;
 import com.wangz.enums.ErrorCode;
 import com.wangz.exceptions.BusinessException;
 import com.wangz.models.resp.ApiResponse;
 import com.wangz.service.ProductDubboService;
 import com.wangz.utils.CheckParam;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Date;
 
 /**
  * @author wangzun
@@ -32,6 +35,26 @@ public class ProductDubboServiceImpl implements ProductDubboService {
             throw new BusinessException(ErrorCode.STORE_NOT_ENOUGH);
         }
         resp.setData(product);
+        return resp;
+    }
+
+    @Override
+    public ApiResponse<Integer> deductInventory(Long productId) {
+        ApiResponse<Integer> resp = ApiResponse.ok();
+        Product product = findProductById2DB(productId);
+
+        if (CheckParam.isNull(product)) {
+            throw new BusinessException(ErrorCode.NO_PRODUCT_CODE);
+        }
+        ProductExample example = new ProductExample();
+        example.createCriteria().andStoreEqualTo(product.getStore())
+                .andIdEqualTo(productId)
+                .andIsDeleteEqualTo(true)
+                .andUpdateTimeEqualTo(product.getUpdateTime());
+        product.setStore(product.getStore() - 1);
+        product.setUpdateTime(new Date());
+        int resu = productDao.updateByExample(product,example);
+        resp.setData(resu);
         return resp;
     }
 

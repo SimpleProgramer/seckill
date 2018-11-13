@@ -1,8 +1,10 @@
 package com.wangz.message;
 
 import com.wangz.models.req.OrderRequest;
+import com.wangz.service.OrderService;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,10 +16,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageReceiver {
 
-
+    @Autowired
+    private OrderService orderService;
 
     @RabbitHandler
-    public Object process(OrderRequest orderRequest) {
-        return null;
+    public void process(OrderRequest orderRequest) {
+        orderService.consumerOrder(orderRequest);
     }
 }
