@@ -22,6 +22,7 @@ public enum ErrorCode {
     NO_USER_CODE("1015", "用户不存在"),
     NO_PRODUCT_CODE("1016", "产品不存在"),
     STORE_NOT_ENOUGH("1017", "产品库存不足"),
+    ORDER_REPEAT("1018","重复下单"),
     NOTENOUGH("5201", "余额不足"),
     ORDERPAID("5202", "商户订单已支付"),
     ORDERCLOSED("5203", "订单已关闭"),
