@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.wangz</groupId>
     <artifactId>seckill</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
   </parent>
   <groupId>user.consumer</groupId>
   <artifactId>user-consumer-service</artifactId>
